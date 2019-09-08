@@ -11,17 +11,18 @@ import {IOperator} from "../../interfaces/operator.interface";
 })
 export class PayPhoneModalComponent implements OnInit {
     public operator: IOperator;
-    form: FormGroup = new FormGroup({
+    public message: string;
+    public form: FormGroup = new FormGroup({
         "phone": new FormControl('', [Validators.required, Validators.minLength(18)]),
         "sum": new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000)]),
     });
 
 
+
     constructor(
         navParams: NavParams,
         private payService: PayService,
-        private modalController: ModalController,
-        private toastController: ToastController
+        private modalController: ModalController
     ) {
         this.operator = navParams.get('selectedOperator')
     }
@@ -31,20 +32,14 @@ export class PayPhoneModalComponent implements OnInit {
 
     processForm(event: any) {
         event.preventDefault();
-        console.log('this.form', this.form);
         this.payService.createPay(this.form.value).subscribe(res => {
             if (res.status === 201) {
-                this.modalController.dismiss();
+                setTimeout(() => {
+                    this.modalController.dismiss();
+                }, 2000);
             }
-            this.presentToast(res.message)
-        })
-    }
+            this.message = res.message;
 
-    async presentToast(msg: string) {
-        const toast = await this.toastController.create({
-            message: msg,
-            duration: 2000
-        });
-        toast.present();
+        })
     }
 }

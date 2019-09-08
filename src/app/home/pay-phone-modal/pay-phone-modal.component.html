@@ -1,11 +1,10 @@
-<form (submit)="processForm($event)" [formGroup]="form">
 <ion-header translucent>
   <ion-toolbar>
     <ion-title>Внести деньги на телефон. Выбран оператор {{this.operator?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content fullscreen>
+  <form (submit)="processForm($event)" [formGroup]="form">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
         <ion-label position="stacked">Номер телефона <ion-text color="danger">*</ion-text></ion-label>
@@ -30,14 +29,15 @@
                 placeholder="Введите число от 1 до 1000"
         ></ion-input>
       </ion-item>
+      <ion-item [hidden]="!message">
+        <ion-text [color]="message === 'error' ? 'danger': 'success'" >{{message}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <div class="ion-padding">
+          <ion-button [disabled]="form.invalid" expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+        </div>
+      </ion-item>
     </ion-list>
-
-
-
-</ion-content>
-<ion-footer>
-  <div class="ion-padding">
-    <ion-button [disabled]="form.invalid" expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
-  </div>
-</ion-footer>
 </form>
+</ion-content>
+
