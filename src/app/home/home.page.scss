@@ -1,0 +1,14 @@
+ion-card {
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.home-card img {
+  max-height: 10vh;
+  max-width: 20vw;
+  margin: auto;
+  overflow: hidden;
+}
