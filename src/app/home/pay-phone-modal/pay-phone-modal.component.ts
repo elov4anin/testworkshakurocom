@@ -10,7 +10,7 @@ import {IOperator} from "../../interfaces/operator.interface";
     styleUrls: ['./pay-phone-modal.component.scss'],
 })
 export class PayPhoneModalComponent implements OnInit {
-    private operator: IOperator;
+    public operator: IOperator;
     form: FormGroup = new FormGroup({
         "phone": new FormControl('', [Validators.required, Validators.minLength(18)]),
         "sum": new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000)]),
