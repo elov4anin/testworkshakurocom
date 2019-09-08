@@ -1,5 +1,5 @@
 # testworkshakurocom
-
+1. 
 `function func(s, a, b) {
  
  	if (s.match(/^$/)) {
@@ -45,5 +45,9 @@
     for (var i = s.length; --i >= 0;)
       if (s[i] == a || s[i] == b) return i;
   };`
+ 
+ 
+ 2. link web
+  http://testworkshakuro.000webhostapp.com
  
  
